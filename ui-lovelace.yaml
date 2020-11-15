@@ -1,0 +1,217 @@
+title: Home
+
+views:
+  - title: MAIN
+    path: main
+    panel: false
+    badges: []
+    cards:
+      - type: weather-forecast
+        entity: weather.home
+      - type: picture-elements
+        elements:
+          - type: state-badge
+            entity: sensor.office_humidity
+            style:
+              top: 14%
+              left: 15%
+          - type: state-badge
+            entity: sensor.office_temperature
+            style:
+              top: 14%
+              left: 28%
+          - type: icon
+            icon: "mdi:door"
+            entity: switch.office_door
+            style:
+              top: 17%
+              left: 42%
+        image: "http://192.168.1.232:8123/local/fllorplan.png"
+  - path: default_view
+    title: Office
+    badges:
+      - entity: binary_sensor.updater
+      - entity: person.yuri
+      - entity: sensor.office_humidity
+      - entity: sun.sun
+    cards:
+      - type: button
+        tap_action:
+          action: toggle
+        entity: switch.sonoff_office_inside
+        name: Office Light
+        icon: mdi:ceiling-light
+      - type: button
+        tap_action:
+          action: toggle
+        entity: switch.sonoff_office_outside
+        name: Office Outside Light
+        icon: mdi:track-light
+      - type: button
+        tap_action:
+          action: toggle
+        entity: switch.office_door
+        name: Office Open Door
+      - type: history-graph
+        entities:
+          - entity: sensor.disk_use_percent_home
+          - entity: sensor.memory_use_percent
+          - entity: sensor.load_1m
+          - entity: sensor.last_boot
+          - entity: sensor.load_5m
+        hours_to_show: 72
+        refresh_interval: 0
+        title: Office MSI Laptop
+      - type: entities
+        entities:
+          - entity: sensor.disk_use_percent_home
+          - entity: sensor.memory_use_percent
+          - entity: sensor.load_1m
+        title: "Office MSI Laptop Quick View "
+      - type: gauge
+        entity: sensor.processor_temperature
+        min: 0
+        max: 100
+        severity:
+          green: 0
+          yellow: 60
+          red: 70
+      - type: entities
+        entities:
+          - sensor.hp_officejet_3830_series_black_ink
+          - sensor.hp_officejet_3830_series_tri_color_ink
+          - sensor.hp_officejet_3830_series
+        title: Office Priner
+        state_color: true
+      - type: sensor
+        entity: sensor.office_humidity
+        graph: line
+        hours_to_show: 72
+        detail: 2
+      - type: sensor
+        entity: sensor.office_temperature
+        graph: line
+        detail: 2
+        hours_to_show: 72
+
+      - type: horizontal-stack
+        title: Air Conditioner
+        cards:
+          - type: custom:button-card
+            entity: switch.ac_off
+            name: Off
+            icon: mdi:air-conditioner
+            color: rgb(28, 128, 199)
+            show_state: false
+
+          - type: custom:button-card
+            entity: switch.ac_cool_16_auto
+            name: Cool Auto
+            icon: mdi:car-seat-cooler
+            color: rgb(28, 128, 199)
+            show_state: false
+
+          - type: custom:button-card
+            entity: switch.ac_cool_17_auto
+            name: Heat Auto
+            icon: mdi:car-seat-heater
+            color: rgb(28, 128, 199)
+            show_state: false
+
+      - type: vertical-stack
+        title: RGB Strip
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.rgb_strip_on_off
+                name: On/Off
+                icon: mdi:desk-lamp
+                color: rgb(28, 128, 199)
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_auto
+                name: Auto
+                icon: mdi:flash-auto
+                color: rgb(28, 128, 199)
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_play_pause
+                name: Play/Pause
+                icon: mdi:play-pause
+                color: rgb(28, 128, 199)
+                show_state: false
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.rgb_strip_red
+                name: Red
+                icon: mdi:brightness-7
+                color: red
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_green
+                name: Green
+                icon: mdi:brightness-7
+                color: green
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_blue
+                name: Blue
+                icon: mdi:brightness-7
+                color: blue
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_white
+                name: White
+                icon: mdi:brightness-7
+                show_state: false
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.rgb_strip_quick
+                name: Quick
+                icon: mdi:play-speed
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_slow
+                name: Slow
+                icon: mdi:play-speed
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_fade3
+                name: Fade 3
+                icon: mdi:brightness-auto
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_fade7
+                name: Fade 7
+                icon: mdi:brightness-auto
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_jump3
+                name: Jump 3
+                icon: mdi:arrow-decision-auto
+                show_state: false
+
+              - type: custom:button-card
+                entity: switch.rgb_strip_jump7
+                name: Jump 7
+                icon: mdi:arrow-decision-auto
+                show_state: false
+
+  - title: Living Room
+    path: living-room
+    badges: []
+    cards: []

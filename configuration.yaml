@@ -1,0 +1,128 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+frontend: !include frontend.yaml
+mqtt:
+  broker: 127.0.0.1
+
+sensor:
+  - platform: mqtt
+    state_topic: "office/Humidity"
+    name: "Office Humidity"
+    unit_of_measurement: "%"
+
+  - platform: mqtt
+    state_topic: "office/Temperature"
+    name: "Office Temperature"
+    unit_of_measurement: "°C"
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_use_percent
+      - type: load_1m
+      - type: load_5m
+      - type: last_boot
+      - type: processor_temperature
+
+sonoff:
+  username: !secret sonoff_app_user
+  password: !secret sonoff_app_pass
+
+switch:
+  - platform: mqtt
+    name: office_door
+    command_topic: "home/office/door"
+    state_topic: "home/office/door"
+    payload_on: "1"
+    payload_off: "1"
+
+  - platform: broadlink
+    mac: A0:43:B0:07:f9:2D
+    switches:
+      ac_cool_16_auto:
+        friendly_name: "AC Cool 16 Auto"
+        command_on: "JgDYAAABJZMVNhU2FRAVEBQRFRAVNRU3FTYVNhU2FRAUERUQFDcVEBU2FREUEBUQFTYUERUQFBIUNxE5FTYVNhUQFg8VEBQSFQ8WEBMRFBIUEBU2FRETEhUQFRAUERUQFBEVEBQRFBEVEBQRFBAUEhQQFTcUERUQFRAVEBUQFRAUERQRFBEVEBUQFRAVEBUQFRAVEBUQFBIVDxURFBAVERMRFDcVEBQSFQ8VERQQFREUEBURFBAVERU2FRAUNxUPFREVDxURExIUNxI5FTYUNxUQFBEVEBQ3FQANBQAAAAAAAAAAAAAAAAAA"
+      ac_cool_17_auto:
+        friendly_name: "AC Cool 17 Auto"
+        command_on: "JgDYAAABJZMTOBU2FBEVEBQRExIVNhQ3FDcUNxQ3FDcTEhITFDcUEhM3Fg8UERQRFDcUERMSFBEUEhMRFRETERM4FBETEhMSFBIUEBQSExEUEhM4ExETExITFRASExQRExISEhMTFBESExQRExIUERMSEjkTEhQSERMTEhITExISExITEhMTEhMSFBESExMSEhMUERQRExIUEhQQExMTERQSEToUEBMSExMUEBMTFBAUEhMRExMUERI5FBESOBQSFBATExQQFBIUERQRExITOBI5EhITExM4EwANBQAAAAAAAAAAAAAAAAAA"
+      ac_cool_18_auto:
+        friendly_name: "AC Cool 18 Auto"
+        command_on: "JgDYAAABJJMVNhQ4ExITERUQFBEVNhQ4EzcVNxM4FBETNxURFDcUERI5FBAVERISFTcUERMSExITEhUQFBESExQ3ExIUEBQTFBAUEhMRFBEUERI5FBETExQQFBEVEBQRFRASExUQFRESEhQSFQ8UEhMRFTYVEBQSEhIUEhUPFBITERQSExEUEhQRExIVEBMSExITEhMRFBITEhITExISExMSEjkTEhMTExEUEhETEhMUERMSFBEUEhE5EhMUOBQQFBITERMTEhMUERMRExMRExMTETkSExQ4EQANBQAAAAAAAAAAAAAAAAAA"
+      ac_off:
+        friendly_name: "AC Off"
+        command_on: "JgDYAAABJJQSOBQ3FBIUEBQRFBESORQ4FDcTNxQ3FRETOBMRFTYVEBQ4ExISEhQSETkVERMRFhAUERMSFBAUEhI5FBEUERQRFBEVEBQRExIUERM4ExIUERURExEUEhQQFBEUERITFBEUERITFBEWDxQRFDcSExQRFRESEhURFQ8UEhQQFBIRFBQRFRAUERMSExEUEhMSExIUERMSFBAUEhISFBISEhQSFBESExQRFBEUERQRFRASFBI4EhMVNhUQEhMUERITFBEUERITFRETERQRFREUEBI5FQANBQAAAAAAAAAAAAAAAAAA"
+      rgbstrip_on_off:
+        friendly_name: "RGB Strip On/Off"
+        command_on: "JgBoAAABJpITEhMUExIUEhMTFREVERIUEjgVNRQ2FDYSOBQ2FDYTNxQSFBIUEhUQFBMUERU1FBIVNRM3FTUTNxU1EzgSExM3EwAE"
+      rgbstrip_bright_up:
+        friendly_name: "RGB Strip Bright Up"
+        command_on: "JgBYAAABJ5ETExMTExMSFBEUFRESFBMUEjcVNRQ2EzcUNhM3FDcSOBEVFBIUNRQ2EzcUExI4EhMVNRU1ExQUERUREzcUEhI4EwAE"
+      rgbstrip_bright_down:
+        friendly_name: "RGB Strip Bright Down"
+        command_on: "JgBYAAABJZMTExURFBITEhURFBMTExIVEDgVNRQ2FTUUNhM3FTUUNhQ3ExITNxE5EToTEhQ2EhQSFRM2ExMTExMTEjgTFRA4EwAE"
+      rgbstrip_play_puse:
+        friendly_name: "RGB Strip Play/Pause"
+        command_on: "JgBgAAABJpMTEhIUFRETExQSExMUERQSFTUSOBU1FTUUNhU1EzcTNxU1ExMVERQTFBETExI4EhQSFBI4EjgTNxQ2EjgSFBQ2FAAE"
+      rgbstrip_red:
+        friendly_name: "RGB Strip Red"
+        command_on: "JgBYAAABJ5EUEhUREhQSFBMSFBIUEhQSFTUUNhI4FTUUNhQ2EzcTNxU1FRITExA5EzcTExU1FBIUEhQ2EjgTExIUFDYTExE5EgAE"
+      rgbstrip_green:
+        friendly_name: "RGB Strip Green"
+        command_on: "JgBgAAABJpISFBMSExMUEhQSFBISFBMSEzgTNxM3FDYTNxM3FDYUNhQSEhQTEhM3FDcTEhM3FBITNxQ2FDcTEhURFTUTExM3FAAE"
+      rgbstrip_blue:
+        friendly_name: "RGB Strip Blue"
+        command_on: "JgBYAAABJ5ETExMTFBIUExQREhMUEhQSEjgVNhM2EzcTNxQ3EzcTNxQ2EhMVNhQRExMUEhQ2ExMUEhI4FBISOBQ2EjgSFBU1FQAE"
+      rgbstrip_white:
+        friendly_name: "RGB Strip White"
+        command_on: "JgBYAAABJJQSFBURFBIUERQSFBIUEhQSFDYUNhI4EzcUNhQ2FTUSOBMTExMUNhIUFREUERQ3ExIUNhM3ExMTNxQ2EzgTEhM3EwAE"
+      rgbstrip_auto:
+        friendly_name: "RGB Strip Auto"
+        command_on: "JgBYAAABJ5ESFBQSExIUEhURFBIUEhIUEjgTNxU1FDYVNRQ2FTUTOBM3FDYSOBQ2FREVERIUFBITEhQSExMUEhI4EzcTNxQ2EwAE"
+      rgbstrip_quick:
+        friendly_name: "RGB Strip Quick"
+        command_on: "JgBYAAABJJQVERUSFBEUEhIUEhMUEhQSFTUSOBQ2FTUUNxU1EjkTNhI4FDYTNxIUFDcTEhMTFBIVERMSFRETNxMTEzcTNxM3EQAE"
+      rgbstrip_slow:
+        friendly_name: "RGB Strip Slow"
+        command_on: "JgBYAAABJ5EUEhQSFBIUEhIUFRAUEhURFDcUNRQ2EzcUNhI5EzcTNxI4FDYVERMTFDYVEBMTFREVEhQRFTUVNRUREjgUNhM3EwAE"
+      rgbstrip_jump3:
+        friendly_name: "RGB Strip Jump3"
+        command_on: "JgCwAAABJZQSExMTFBITExITFBMUEhMSEjgVNRM3FTUUNhQ2FTUTOBMTFBITNhURFREUEhQSEBYSOBI4ExMTNxM3FTUSOBE5EwAE"
+      rgbstrip_jump7:
+        friendly_name: "RGB Strip Jump7"
+        command_on: "JgBgAAABJpMSFBITFREVERURExMTExUREzcVNRQ2EjgTNxQ2EzcVNRU2EhQVNRURExMTEhMTExMUEhU1FREVNRQ2FjUTNxI4EgAE"
+      rgbstrip_fade3:
+        friendly_name: "RGB Strip Fade3"
+        command_on: "JgBYAAABJJQUEhQSExMUEhURFRESExMTFDYUNxM3EjgVNRQ2FDYVNRUSEzYUNhQSFBITExURFBIVNRIUEhMTOBI4FDYTNxU1FAAE"
+      rgbstrip_fade7:
+        friendly_name: "RGB Strip Fade7"
+        command_on: "JgBYAAABJpIUEhQSExMUEhQSEhQUEhMSFTYUNhQ2EjgUNhQ2FDYVNRQ2FDYUNxAVFBIVEhQRExMSFBURFRETNxI4FDYUNhQ2FAAE"
+      rgbstrip_flash:
+        friendly_name: "RGB Strip Flash"
+        command_on: "JgBgAAABJZMVERMTFBIVERURFBITEhQSFDcSNxM3FTYTNxM3ETkVNRQ2FTUUEhU1FBIVERQRFBITExMUFDUUEhQ2FDYUNhM3FQAE"
+
+remote:
+  - platform: broadlink
+    host: 192.168.1.172
+    mac: A0:43:B0:07:f9:2D
+    name: rm4_mini_office
+
+  - platform: broadlink
+    host: 192.168.252.57
+    mac: 24:DF:A7:F1:34:E0
+    name: rm4c_pro_living_room
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/button-card.js
+      type: module

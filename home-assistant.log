@@ -1,0 +1,5 @@
+2020-11-15 16:02:11 WARNING (MainThread) [homeassistant.loader] You are using a custom integration for sonoff which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant.
+2020-11-15 16:02:11 WARNING (MainThread) [homeassistant.loader] You are using a custom integration for hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant.
+2020-11-15 16:02:14 WARNING (MainThread) [homeassistant.components.broadlink.remote] The remote platform is deprecated, please remove it from your configuration
+2020-11-15 16:02:14 WARNING (MainThread) [homeassistant.components.broadlink.remote] The remote platform is deprecated, please remove it from your configuration
+2020-11-15 16:02:14 WARNING (MainThread) [homeassistant.components.broadlink.switch] Your configuration for the switch platform is deprecated. Please refer to the Broadlink documentation to catch up
