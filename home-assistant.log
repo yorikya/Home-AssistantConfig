@@ -1766,3 +1766,49 @@
 2020-12-11 10:00:22 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
 2020-12-11 10:01:47 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
 2020-12-11 10:03:12 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:04:37 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:05:07 ERROR (MainThread) [homeassistant.components.ipp] Error fetching ipp data: Invalid response from API: Timeout occurred while connecting to IPP server.
+2020-12-11 10:06:02 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:07:31 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:08:27 WARNING (MainThread) [homeassistant.helpers.entity] Update of sensor.processor_temperature is taking over 10 seconds
+2020-12-11 10:08:32 WARNING (MainThread) [homeassistant.components.sensor] Updating systemmonitor sensor took longer than the scheduled update interval 0:00:30
+2020-12-11 10:08:43 ERROR (MainThread) [homeassistant.components.ipp] Error fetching ipp data: Invalid response from API: Timeout occurred while connecting to IPP server.
+2020-12-11 10:09:08 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:09:09 WARNING (MainThread) [homeassistant.helpers.entity] Update of sensor.disk_use_percent_home is taking over 10 seconds
+2020-12-11 10:10:46 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/hassio/ingress.py", line 247, in _websocket_forward
+    await ws_to.send_bytes(msg.data)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/client_ws.py", line 155, in send_bytes
+    await self._writer.send(data, binary=True, compress=compress)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 685, in send
+    await self._send_frame(message, WSMsgType.BINARY, compress)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 643, in _send_frame
+    self._write(header + mask + message)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 660, in _write
+    raise ConnectionResetError("Cannot write to closing transport")
+ConnectionResetError: Cannot write to closing transport
+2020-12-11 10:10:46 WARNING (MainThread) [homeassistant.components.sensor] Updating systemmonitor sensor took longer than the scheduled update interval 0:00:30
+2020-12-11 10:10:47 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:11:13 WARNING (MainThread) [homeassistant.components.sensor] Updating systemmonitor sensor took longer than the scheduled update interval 0:00:30
+2020-12-11 10:11:47 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/hassio/ingress.py", line 247, in _websocket_forward
+    await ws_to.send_bytes(msg.data)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/client_ws.py", line 155, in send_bytes
+    await self._writer.send(data, binary=True, compress=compress)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 685, in send
+    await self._send_frame(message, WSMsgType.BINARY, compress)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 643, in _send_frame
+    self._write(header + mask + message)
+  File "/usr/local/lib/python3.8/site-packages/aiohttp/http_websocket.py", line 660, in _write
+    raise ConnectionResetError("Cannot write to closing transport")
+ConnectionResetError: Cannot write to closing transport
+2020-12-11 10:12:37 WARNING (MainThread) [homeassistant.components.sensor] Updating systemmonitor sensor took longer than the scheduled update interval 0:00:30
+2020-12-11 10:12:37 WARNING (MainThread) [homeassistant.components.sensor] Updating hacs sensor took longer than the scheduled update interval 0:00:30
+2020-12-11 10:12:49 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:14:15 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:15:40 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:17:09 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:18:35 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
+2020-12-11 10:20:00 WARNING (MainThread) [homeassistant.config_entries] Config entry for broadlink not ready yet. Retrying in 80 seconds
